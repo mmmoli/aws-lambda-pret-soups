@@ -4,5 +4,8 @@
   "description": "Scrapes available pret soups",
   "main": "index.js",
   "author": "Michele Memoli <michele@100shapes.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "x-ray": "^2.3.1"
+  }
 }
