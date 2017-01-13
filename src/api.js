@@ -1,19 +1,18 @@
 import API from 'claudia-api-builder'
-import fs from 'fs'
-import denodeify from 'denodeify'
-// import soups from './soups';
+import soups from './soups';
+import packagejson from './packagejson';
 
 const api = new API()
 
 api.get('/', () => 'Hello')
 
 api.get('/packagejson', () => {
-	const read = denodeify(fs.readFile);
-	return read('./package.json')
-		.then(JSON.parse)
-		.then(val => val);
+  return packagejson();
 });
 
-// api.get('/soups', () => soups());
+api.get('/soups', () => {
+  return soups
+});
 
-module.exports = api
+module.exports = api;
+
