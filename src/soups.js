@@ -1,5 +1,9 @@
 import Xray from 'x-ray';
-const x = Xray();
+const x = Xray({
+  filters: {
+    findNumber: str => parseInt(str.split(' ')[0],8)
+  }
+});
 
 const scrape = (dayOfWeekIndex = 0) => {
 
@@ -11,7 +15,7 @@ const scrape = (dayOfWeekIndex = 0) => {
       soups: x(`${selector} article.soup-box`, [{
         name: 'h3',
         description: 'p:last-child',
-        calorieCount: 'p.boldText'
+        calorieCount: 'p.boldText | findNumber'
       }])
     })
     ((err, obj) => {

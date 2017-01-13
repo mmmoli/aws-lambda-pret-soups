@@ -46,7 +46,7 @@ describe('Soups Module', function() {
       return soups().then(function(res) {
         return res.soups[0].should
           .have.property('calorieCount')
-          .and.to.be.an('string');
+          .and.to.be.an('number');
       })
     });
 
