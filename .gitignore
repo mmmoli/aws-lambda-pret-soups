@@ -3,6 +3,7 @@
 # package directories
 node_modules
 jspm_packages
+bin
 
 # Serverless directories
 .serverless

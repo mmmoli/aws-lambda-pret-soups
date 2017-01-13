@@ -1,0 +1,11 @@
+{
+  "lambda": {
+    "role": "pret-soups-executor",
+    "name": "pret-soups",
+    "region": "eu-west-1"
+  },
+  "api": {
+    "id": "idwhuk6530",
+    "module": "bin/api"
+  }
+}
