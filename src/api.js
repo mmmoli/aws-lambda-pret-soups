@@ -6,7 +6,7 @@ const api = new API();
 api.get('/', () => 'Hello');
 
 api.get('/soups', () => {
-  return soups
+  return soups();
 });
 
 module.exports = api;
