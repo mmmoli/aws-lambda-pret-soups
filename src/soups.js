@@ -1,15 +1,26 @@
-import osmosis from 'osmosis';
+import Xray from 'x-ray';
+const x = Xray();
 
 const scrape = () => {
-  return osmosis
-    .get('https://www.pret.co.uk/en-gb/weekly-pret-soups')
-    .find('#Dbox1 article.soup-box')
-    .set({
-      name: 'h3',
-      description: 'p:last-child',
-      calorieCount: 'p.boldText'
+
+  return new Promise((resolve, reject) => {
+
+    x('https://www.pret.co.uk/en-gb/weekly-pret-soups', {
+      soups: x('#Dbox1 article.soup-box', [{
+        name: 'h3',
+        description: 'p:last-child',
+        calorieCount: 'p.boldText'
+      }])
     })
-    .data(soups => soups)
+    ((err, obj) => {
+      if (err) {
+        return reject(err);
+      }
+      return resolve(obj);
+    });
+
+  });
 }
 
-export default scrape;
+
+module.exports = scrape;

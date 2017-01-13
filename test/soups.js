@@ -1,14 +1,48 @@
-// var chai = require("chai");
-// var chaiAsPromised = require("chai-as-promised");
+var chai = require("chai");
+var chaiAsPromised = require("chai-as-promised");
 var soups = require("../bin/soups");
  
-// chai.use(chaiAsPromised);
- // chai.should();
+chai.use(chaiAsPromised);
+chai.should();
 
-describe('soups module', function() {
-  it('returns soup objects', function() {
-  	console.log(soups);
-  	return true;
-  	// return soups().should.eventually.have.length(3);
+describe('Soups Module', function() {
+
+  it('returns a promise', function() {
+    return soups()
+      .should.be.a('promise');
+  });
+
+  it('eventually returns a list of soups', function() {
+    return soups().should.eventually
+      .have.property('soups')
+      .and.to.be.an('array');
+  });
+
+  describe('Soup', function() {
+
+    it('has a name', function() {
+      return soups().then(function(res) {
+        return res.soups[0].should
+          .have.property('name')
+          .and.to.be.an('string');
+      })
+    });
+
+    it('has a description', function() {
+      return soups().then(function(res) {
+        return res.soups[0].should
+          .have.property('description')
+          .and.to.be.an('string');
+      })
+    });
+
+    it('has a calorie count', function() {
+      return soups().then(function(res) {
+        return res.soups[0].should
+          .have.property('calorieCount')
+          .and.to.be.an('string');
+      })
+    });
+
   });
 });
