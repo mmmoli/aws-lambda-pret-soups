@@ -18,6 +18,12 @@ describe('Soups Module', function() {
       .and.to.be.an('array');
   });
 
+  it('get soups for a different day', function() {
+    return soups(2).should.eventually
+      .have.property('soups')
+      .and.to.be.an('array');
+  });
+
   describe('Soup', function() {
 
     it('has a name', function() {

@@ -1,12 +1,14 @@
 import Xray from 'x-ray';
 const x = Xray();
 
-const scrape = () => {
+const scrape = (dayOfWeekIndex = 0) => {
 
   return new Promise((resolve, reject) => {
 
+    const selector = `#Dbox${parseInt(dayOfWeekIndex, 8) + 1}`;
+
     x('https://www.pret.co.uk/en-gb/weekly-pret-soups', {
-      soups: x('#Dbox1 article.soup-box', [{
+      soups: x(`${selector} article.soup-box`, [{
         name: 'h3',
         description: 'p:last-child',
         calorieCount: 'p.boldText'
