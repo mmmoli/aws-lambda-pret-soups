@@ -1,0 +1,8 @@
+{
+  "name": "pret-soups",
+  "version": "1.0.0",
+  "description": "Scrapes available pret soups",
+  "main": "index.js",
+  "author": "Michele Memoli <michele@100shapes.com>",
+  "license": "MIT"
+}
